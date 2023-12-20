@@ -33,16 +33,16 @@ alter table opcine add foreign key (zupanija) references zupanije(sifra);
 alter table zupanije add foreign key (zupan) references zupani(sifra);
 
 insert into zupani(ime, prezime) values
-('Stjepan','Kozic'),
-('Zeljko','Kolar'),
+('Stjepan','Kožiæ'),
+('Željko','Kolar'),
 ('Ivan','Celjak'),
 ('Darko','Koren');
 
 insert into zupanije(naziv) values
-('Zagrebacka zupanija'),
-('Krapinsko-zagorska zupanija'),
-('Sisacko-moslavacka zupanija'),
-('Koprivnicko-krizevacka zupanija');
+('Zagrebaèka županija'),
+('Krapinsko-zagorska županija'),
+('Sisaèko-moslavaèka županija'),
+('Koprivnièko-križevaèka županija');
 
 insert into opcine(naziv) values
 ('Bale'),
@@ -51,13 +51,15 @@ insert into opcine(naziv) values
 ('Gradac');
 
 insert into mjesta(naziv) values
-('')
-('')
-('')
-('');
+('Puhovo'),
+('Lepšiæ'),
+('Tarno'),
+('Celine');
 
 select * from zupani;
 
 select * from zupanije;
 
 select * from opcine;
+
+select * from mjesta;
