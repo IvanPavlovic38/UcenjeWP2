@@ -76,9 +76,9 @@ gustoca decimal(14,9),
 hlace varchar(41) not null
 );
 
-alter table cura add foreign (punac) key references punac(sifra);
-alter table  add foreign () key references ();
-alter table  add foreign () key references ();
-alter table  add foreign () key references ();
-alter table  add foreign () key references ();
-alter table  add foreign () key references ();
+alter table cura add foreign key (punac) references punac(sifra);
+alter table zena add foreign key (sestra) references sestra(sifra);
+alter table muskarac add foreign key (zena) references zena(sifra);
+alter table mladic add foreign key (muskarac) references muskarac(sifra);
+alter table sestra_svekar add foreign key (svekar) references svekar(sifra);
+alter table sestra_svekar add foreign key (sestra) references sestra(sifra);
