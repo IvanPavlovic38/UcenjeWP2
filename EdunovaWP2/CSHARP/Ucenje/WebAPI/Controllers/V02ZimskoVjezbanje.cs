@@ -17,13 +17,31 @@ namespace WebAPI.Controllers
                 zbroj = zbroj + i + 1;
             }
 
-            return zbroj;
-            
+            return zbroj;  
         }
 
-        
+
+        [HttpGet]
+        [Route("zad3")]
+        public int Zad3(int brojevi)
+        {
+            int zbroj = 0;
+
+            for (int i = 2; i <= 18; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    zbroj = zbroj + i;
+                }
+            }
+
+            return zbroj;
+
+        }
 
 
-       
+
+
+
     }
 }
