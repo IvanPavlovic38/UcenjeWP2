@@ -78,6 +78,21 @@ namespace WebAPI.Controllers
             return suma;
         }
 
+        [HttpGet]
+        [Route("zad9")]
+        public int Zad9(int Od, int Do)
+        {
+            int suma = 0;
+            for (int i = Od; i <= Do; i++)
+            {
+                if ((i % 3) == 0 && (i % 5) == 0)
+                {
+                    suma += i;
+                }
+            }
+            return suma;
+        }
+
 
 
 
