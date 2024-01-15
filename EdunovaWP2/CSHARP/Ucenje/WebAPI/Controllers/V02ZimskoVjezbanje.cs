@@ -93,6 +93,28 @@ namespace WebAPI.Controllers
             return suma;
         }
 
+        [HttpGet]
+        [Route("zad12")]
+        public bool Zad12(int Broj)
+        {
+            int BrojDjelitelja = 2;
+            for (int i = 2; i < Broj; i++)
+            {
+                if (Broj % i == 0)
+                {
+                    BrojDjelitelja++;
+                }
+            }
+            if (BrojDjelitelja == 2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
 
 
