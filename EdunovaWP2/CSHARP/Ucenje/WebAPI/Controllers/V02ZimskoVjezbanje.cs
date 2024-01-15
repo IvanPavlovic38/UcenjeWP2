@@ -4,26 +4,41 @@ namespace WebAPI.Controllers
 {
     [ApiController]
     [Route("V02")]
-    public class V02ZimskoVjezbanje:ControllerBase
+    public class V02ZimskoVjezbanje : ControllerBase
     {
         [HttpGet]
         [Route("zad1")]
-        public int Zad1( int brojevi)
+        public int Zad1()
         {
-            int zbroj=0;
+            int zbroj = 0;
 
             for (int i = 0; i < 100; i++)
             {
                 zbroj = zbroj + i + 1;
             }
 
-            return zbroj;  
+            return zbroj;
         }
+
+        //[HttpGet]
+        //[Route("zad2")]
+        //public int[] Zad2()
+        //{
+        //    int niz[] = new int[];
+        //    for(int i = 1; i <= 57; i++)
+        //    {
+        //        if (i % 2 == 0)
+        //        {
+        //            niz[i] = i;
+        //        }
+        //    }
+        //    return niz;
+        //}
 
 
         [HttpGet]
         [Route("zad3")]
-        public int Zad3(int brojevi)
+        public int Zad3()
         {
             int zbroj = 0;
 
@@ -49,6 +64,21 @@ namespace WebAPI.Controllers
                 suma += i;
             }
             return suma;
+        }
+
+        [HttpGet]
+        [Route("zad5")]
+        public int[] Zad5(int Od, int Do)
+        {
+            int niz[];
+            for (int i = Od; i <= Do; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    niz[i] = i;
+                }
+            }
+            return niz;
         }
 
         [HttpGet]
