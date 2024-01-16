@@ -20,20 +20,22 @@ namespace WebAPI.Controllers
             return zbroj;
         }
 
-        //[HttpGet]
-        //[Route("zad2")]
-        //public int[] Zad2()
-        //{
-        //    int niz[] = new int[];
-        //    for(int i = 1; i <= 57; i++)
-        //    {
-        //        if (i % 2 == 0)
-        //        {
-        //            niz[i] = i;
-        //        }
-        //    }
-        //    return niz;
-        //}
+        [HttpGet]
+        [Route("zad2")]
+        public int[] Zad2()
+        {
+            int[] Niz = new int[28];
+            int Index = 0;
+            for (int i = 1; i <= 57; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    Niz[Index] = i;
+                    Index++;
+                }
+            }
+            return Niz;
+        }
 
 
         [HttpGet]
@@ -67,19 +69,22 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("zad5")]
+        [Route("Zad5")]
         public int[] Zad5(int Od, int Do)
         {
-            int niz[];
+            int[] Niz = new int[100];
+            int Index = 0;
             for (int i = Od; i <= Do; i++)
             {
                 if (i % 2 == 0)
                 {
-                    niz[i] = i;
+                    Niz[Index] = i;
+                    Index++;
                 }
             }
-            return niz;
+            return Niz;
         }
+
 
         [HttpGet]
         [Route("zad7")]
