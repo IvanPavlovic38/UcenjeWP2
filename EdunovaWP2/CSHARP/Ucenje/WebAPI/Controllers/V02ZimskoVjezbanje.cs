@@ -144,6 +144,25 @@ namespace WebAPI.Controllers
             return suma;
         }
 
+        //[HttpGet]
+        //[Route("Zad10")]
+        //public int[] Zad10()
+        //{
+            
+        //}
+
+        [HttpGet]
+        [Route("Zad11")]
+        public int[] Zad11(int Broj)
+        {
+            int[] Niz = new int[100];
+            for (int i = Broj; i >= 1; i--)
+            {
+                Niz[Broj - i] = i;
+            }
+            return Niz;
+        }
+
         [HttpGet]
         [Route("zad12")]
         public bool Zad12(int Broj)
