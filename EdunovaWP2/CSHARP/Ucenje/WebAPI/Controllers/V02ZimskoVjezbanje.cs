@@ -85,6 +85,22 @@ namespace WebAPI.Controllers
             return Niz;
         }
 
+        [HttpGet]
+        [Route("Zad6")]
+        public int[] Zad6(int Od, int Do)
+        {
+            int[] Niz = new int[100];
+            int Index = 0;
+            for (int i = Od; i <= Do; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    Niz[Index] = i;
+                    Index++;
+                }
+            }
+            return Niz;
+        }
 
         [HttpGet]
         [Route("zad7")]
