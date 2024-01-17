@@ -144,12 +144,23 @@ namespace WebAPI.Controllers
             return suma;
         }
 
-        //[HttpGet]
-        //[Route("Zad10")]
-        //public int[] Zad10()
-        //{
-            
-        //}
+        [HttpGet]
+        [Route("Zad10")]
+        public int[,] Zad10(int a, int b)
+        {
+            int[,] table = new int[a, b];
+
+            for (int i = 0; i < a; i++)
+            {
+                for (int j = 0; j < b; j++)
+                {
+                    table[i, j] = (i + 1) * (j + 1);
+                }
+            }
+
+            return table;
+        }
+
 
         [HttpGet]
         [Route("Zad11")]
@@ -185,6 +196,12 @@ namespace WebAPI.Controllers
             }
         }
 
+        //[HttpGet]
+        //[Route("Zad13")]
+        //public int[] Zad13()
+        //{
+
+        //}
 
 
 
