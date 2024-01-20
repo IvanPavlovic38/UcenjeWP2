@@ -61,7 +61,7 @@ namespace WebAPI.Controllers
         public int Zad4(int broj)
         {
             int suma = 0;
-            for(int i = 1; i <= broj; i++)
+            for (int i = 1; i <= broj; i++)
             {
                 suma += i;
             }
@@ -148,17 +148,17 @@ namespace WebAPI.Controllers
         [Route("Zad10")]
         public int[,] Zad10(int a, int b)
         {
-            int[,] table = new int[a, b];
+            int[,] Niz = new int[a, b];
 
             for (int i = 0; i < a; i++)
             {
                 for (int j = 0; j < b; j++)
                 {
-                    table[i, j] = (i + 1) * (j + 1);
+                    Niz[i, j] = (i + 1) * (j + 1);
                 }
             }
 
-            return table;
+            return Niz;
         }
 
 
@@ -196,14 +196,50 @@ namespace WebAPI.Controllers
             }
         }
 
-        //[HttpGet]
-        //[Route("Zad13")]
-        //public int[] Zad13()
-        //{
+        [HttpGet]
+        [Route("SpiralnaMatrica")]
+        public  int[,] SpiralnaMatrica(int m, int n)
+        {
+            int[,] matrix = new int[m, n];
+            int num = 1;
+            int rowStart = 0, rowEnd = m - 1;
+            int colStart = 0, colEnd = n - 1;
 
-        //}
+            while (rowStart <= rowEnd && colStart <= colEnd)
+            {
+                for (int i = colStart; i <= colEnd; i++)
+                {
+                    matrix[rowStart, i] = num++;
+                }
+                rowStart++;
 
+                for (int i = rowStart; i <= rowEnd; i++)
+                {
+                    matrix[i, colEnd] = num++;
+                }
+                colEnd--;
 
+                if (rowStart <= rowEnd)
+                {
+                    for (int i = colEnd; i >= colStart; i--)
+                    {
+                        matrix[rowEnd, i] = num++;
+                    }
+                    rowEnd--;
+                }
+
+                if (colStart <= colEnd)
+                {
+                    for (int i = rowEnd; i >= rowStart; i--)
+                    {
+                        matrix[i, colStart] = num++;
+                    }
+                    colStart++;
+                }
+            }
+
+            return matrix;
+        }
 
 
 
