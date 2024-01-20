@@ -49,7 +49,7 @@ namespace UcenjeCS
             return (double)Zbroj(niz) / niz.Length;
         }
 
-        public static void Main(string[] args)
+        public static void Izvedi()
         {
             var lista = new System.Collections.Generic.List<int>();
 
