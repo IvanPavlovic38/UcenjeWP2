@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,51 +9,44 @@ namespace UcenjeCS
 {
     internal class Z02Vjezba
     {
-        public static int Zbroj(int[] niz)
+        public static int Zbroj(int broj, int suma)
         {
-            int suma = 0;
-            foreach (int broj in niz)
-            {
-                suma += broj;
-            }
+            suma += broj;
+
             return suma;
         }
 
-        public static int Najmanji(int[] niz)
+        public static int Najmanji(int broj, int min)
         {
-            int min = niz[0];
-            foreach (int broj in niz)
+            if (broj < min)
             {
-                if (broj < min)
-                {
-                    min = broj;
-                }
+                min = broj;
             }
+
             return min;
         }
 
-        public static int Najveci(int[] niz)
+        public static int Najveci(int broj, int max)
         {
-            int max = niz[0];
-            foreach (int broj in niz)
+            if (broj > max)
             {
-                if (broj > max)
-                {
-                    max = broj;
-                }
+                max = broj;
             }
+
             return max;
         }
 
-        public static double Prosjek(int[] niz)
+        public static double Prosjek(int suma, int br)
         {
-            return (double)Zbroj(niz) / niz.Length;
+            return (double)suma / br;
         }
 
         public static void Izvedi()
         {
-            var lista = new System.Collections.Generic.List<int>();
-
+            int suma = 0;
+            int min = 0;
+            int max = 0;
+            int br = 0;
             while (true)
             {
                 Console.Write("Unesite broj (-1 za kraj): ");
@@ -65,7 +59,10 @@ namespace UcenjeCS
                         break;
                     }
 
-                    lista.Add(broj);
+                    Zbroj(broj, suma);
+                    Najmanji(broj, min);
+                    Najveci(broj, max);
+                    br++;
                 }
                 catch (FormatException)
                 {
@@ -73,19 +70,10 @@ namespace UcenjeCS
                 }
             }
 
-            int[] niz = lista.ToArray();
-
-            if (niz.Length == 0)
-            {
-                Console.WriteLine("Niste unijeli niti jedan broj.");
-            }
-            else
-            {
-                Console.WriteLine("Zbroj unesenih brojeva je: " + Zbroj(niz));
-                Console.WriteLine("Najmanji uneseni broj je: " + Najmanji(niz));
-                Console.WriteLine("Najveći uneseni broj je: " + Najveci(niz));
-                Console.WriteLine("Prosjek unesenih brojeva je: " + Prosjek(niz));
-            }
+            Console.WriteLine("Zbroj unesenih brojeva je: " + suma);
+            Console.WriteLine("Najmanji uneseni broj je: " + min);
+            Console.WriteLine("Najveći uneseni broj je: " + max);
+            Console.WriteLine("Prosjek unesenih brojeva je: " + Prosjek(suma, br));
         }
 
 

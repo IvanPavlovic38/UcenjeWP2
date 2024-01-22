@@ -198,7 +198,7 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         [Route("SpiralnaMatrica")]
-        public  int[,] SpiralnaMatrica(int m, int n)
+        public int[,] SpiralnaMatrica(int m, int n)
         {
             int[,] matrix = new int[m, n];
             int num = 1;
