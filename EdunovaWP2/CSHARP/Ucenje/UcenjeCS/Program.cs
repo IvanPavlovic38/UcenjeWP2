@@ -13,4 +13,6 @@ using UcenjeCS;
 
 //V01ZimskoVjezbanje.Izvedi();
 
-Z02Vjezba.Izvedi();
+//Z02Vjezba.Izvedi();
+
+LjubavniKalkulator.Izvedi();
