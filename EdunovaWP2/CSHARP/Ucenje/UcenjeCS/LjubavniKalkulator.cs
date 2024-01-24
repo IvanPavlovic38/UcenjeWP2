@@ -8,36 +8,86 @@ namespace UcenjeCS
 {
     internal class LjubavniKalkulator
     {
-            public static void Izvedi()
+
+
+        public static void Izvedi()
+        {
+            try
             {
-                Console.WriteLine("Unesi svoje ime:");
-                string mojeIme = Console.ReadLine().ToUpper();
-                Console.WriteLine("Unesi ime svoje simpatije:");
-                string njegovoIme = Console.ReadLine().ToUpper();
+                Console.WriteLine("Unesite svoje ime:");
+                string tvojeIme = Console.ReadLine();
+                ProvjeriIme(tvojeIme);
 
-                int[] mojiBrojevi = IzracunajBrojeve(mojeIme);
-                int[] njegoviBrojevi = IzracunajBrojeve(njegovoIme);
+                Console.WriteLine("Unesite ime vaše simpatije:");
+                string imeSimpatije = Console.ReadLine();
+                ProvjeriIme(imeSimpatije);
 
-                
+                string rezultat = IzracunajPostotakLjubavi(tvojeIme, imeSimpatije);
+                Console.WriteLine($"Postotak ljubavi: {rezultat}%");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Došlo je do pogreške: {e.Message}");
+            }
+        }
 
-                Console.WriteLine("Tvoj rezultat je {0}%", rezultat);          
+        public static void ProvjeriIme(string ime)
+        {
+            if (string.IsNullOrEmpty(ime))
+            {
+                throw new ArgumentException("Ime ne smije biti prazno.");
             }
 
-            static int[] IzracunajBrojeve(string ime)
+            foreach (char c in ime)
             {
-                int[] brojevi = new int[ime.Length];
-                for (int i = 0; i < ime.Length; i++)
+                if (!char.IsLetter(c) || !char.IsUpper(c))
                 {
-                    char slovo = ime[i];
-                    int broj = ime.Count(c => c == slovo);
-                    brojevi[i] = broj;
+                    throw new ArgumentException("Ime mora sadržavati samo velika slova.");
                 }
-                return brojevi;
+            }
+        }
+
+        static string IzracunajPostotakLjubavi(string tvojeIme, string imeSimpatije)
+        {
+            string spojenaImena = tvojeIme + imeSimpatije;
+            int[] brojaci = new int[spojenaImena.Length];
+
+            foreach (char c in spojenaImena)
+            {
+                brojaci[c - 'A']++;
             }
 
-            
+            string rezultat = "";
 
-           
+            foreach (int brojac in brojaci)
+            {
+                if (brojac > 0)
+                    rezultat += brojac.ToString();
+            }
+
+            while (rezultat.Length > 2)
+            {
+                string privremeniRezultat = "";
+
+                for (int i = 0; i < rezultat.Length - 1; i++)
+                {
+                    int zbrojZnamenki = (rezultat[i] - '0') + (rezultat[i + 1] - '0');
+                    privremeniRezultat += zbrojZnamenki.ToString();
+                }
+
+                rezultat = privremeniRezultat;
+            }
+
+            return rezultat;
+        }
+    
+
+
+
+
+
+
+
 
 
     }
