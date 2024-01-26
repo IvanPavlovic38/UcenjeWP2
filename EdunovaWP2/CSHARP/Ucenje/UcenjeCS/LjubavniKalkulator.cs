@@ -10,85 +10,120 @@ namespace UcenjeCS
     {
 
 
-        public static void Izvedi()
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+    {
+        static void Main()
         {
-            try
-            {
-                Console.WriteLine("Unesite svoje ime:");
-                string tvojeIme = Console.ReadLine();
-                ProvjeriIme(tvojeIme);
+            Console.WriteLine("Unesite svoje ime:");
+            string tvojeIme = Console.ReadLine();
 
-                Console.WriteLine("Unesite ime vaše simpatije:");
-                string imeSimpatije = Console.ReadLine();
-                ProvjeriIme(imeSimpatije);
+            Console.WriteLine("Unesite ime svoje simpatije:");
+            string simpatijaIme = Console.ReadLine();
 
-                string rezultat = IzracunajPostotakLjubavi(tvojeIme, imeSimpatije);
-                Console.WriteLine($"Postotak ljubavi: {rezultat}%");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Došlo je do pogreške: {e.Message}");
-            }
+            Console.WriteLine("Prvi redak:");
+            IspisiBrojeve(tvojeIme);
+            IspisiBrojeve(simpatijaIme);
+
+            Console.WriteLine("Drugi redak:");
+            int[] zbrojiPrviZadnji = ZbrojiPrviZadnji(tvojeIme, simpatijaIme);
+            IspisiZbroj(zbrojiPrviZadnji);
+
+            Console.WriteLine("Treći redak:");
+            int[] zbrojiSrednje = ZbrojiSrednje(tvojeIme, simpatijaIme);
+            IspisiZbroj(zbrojiSrednje);
+
+            Console.WriteLine("Četvrti redak - Postotak ljubavi:");
+            double postotakLjubavi = IzracunajPostotak(zbrojiPrviZadnji, zbrojiSrednje);
+            Console.WriteLine($"{postotakLjubavi}%");
+
         }
 
-        public static void ProvjeriIme(string ime)
+        static void IspisiBrojeve(string ime)
         {
-            if (string.IsNullOrEmpty(ime))
-            {
-                throw new ArgumentException("Ime ne smije biti prazno.");
-            }
+            Dictionary<char, int> brojac = new Dictionary<char, int>();
 
-            foreach (char c in ime)
+            foreach (char slovo in ime)
             {
-                if (!char.IsLetter(c) || !char.IsUpper(c))
+                if (brojac.ContainsKey(slovo))
                 {
-                    throw new ArgumentException("Ime mora sadržavati samo velika slova.");
+                    brojac[slovo]++;
+                }
+                else
+                {
+                    brojac[slovo] = 1;
                 }
             }
+
+            foreach (var par in brojac)
+            {
+                Console.Write($"{par.Key}{par.Value} ");
+            }
+            Console.WriteLine();
         }
 
-        static string IzracunajPostotakLjubavi(string tvojeIme, string imeSimpatije)
+        static int[] ZbrojiPrviZadnji(string tvojeIme, string simpatijaIme)
         {
-            string spojenaImena = tvojeIme + imeSimpatije;
-            int[] brojaci = new int[spojenaImena.Length];
-
-            foreach (char c in spojenaImena)
-            {
-                brojaci[c - 'A']++;
-            }
-
-            string rezultat = "";
-
-            foreach (int brojac in brojaci)
-            {
-                if (brojac > 0)
-                    rezultat += brojac.ToString();
-            }
-
-            while (rezultat.Length > 2)
-            {
-                string privremeniRezultat = "";
-
-                for (int i = 0; i < rezultat.Length - 1; i++)
-                {
-                    int zbrojZnamenki = (rezultat[i] - '0') + (rezultat[i + 1] - '0');
-                    privremeniRezultat += zbrojZnamenki.ToString();
-                }
-
-                rezultat = privremeniRezultat;
-            }
-
-            return rezultat;
+            int prviZadnji = BrojZadnjih(tvojeIme) + BrojPrvih(simpatijaIme);
+            return new int[] { prviZadnji };
         }
-    
 
+        static int[] ZbrojiSrednje(string tvojeIme, string simpatijaIme)
+        {
+            int srednjiTvoje = BrojSrednjih(tvojeIme);
+            int srednjiSimpatije = BrojSrednjih(simpatijaIme);
+            return new int[] { srednjiTvoje, srednjiSimpatije };
+        }
 
+        static void IspisiZbroj(int[] zbroj)
+        {
+            foreach (var broj in zbroj)
+            {
+                Console.Write($"{broj} ");
+            }
+            Console.WriteLine();
+        }
 
+        static int BrojPrvih(string tekst)
+        {
+            return int.Parse(new string(tekst.Take(2).ToArray()));
+        }
 
+        static int BrojZadnjih(string tekst)
+        {
+            return int.Parse(new string(tekst.Reverse().Take(2).Reverse().ToArray()));
+        }
 
+        static int BrojSrednjih(string tekst)
+        {
+            return int.Parse(new string(tekst.Skip(2).Take(2).ToArray()));
+        }
 
-
-
-
+        static double IzracunajPostotak(int[] zbrojPrviZadnji, int[] zbrojSrednje)
+        {
+            int ukupniZbroj = zbrojPrviZadnji[0] + zbrojSrednje[0] + zbrojSrednje[1];
+            return (ukupniZbroj % 101); // Da dobijemo postotak
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 }
