@@ -198,51 +198,62 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         [Route("SpiralnaMatrica")]
-        public int[,] SpiralnaMatrica(int m, int n)
+        public static int[,] SpiralnaMatrica(int redci, int stupci)
         {
-            int[,] matrix = new int[m, n];
-            int num = 1;
-            int rowStart = 0, rowEnd = m - 1;
-            int colStart = 0, colEnd = n - 1;
+            int[,] matrica = new int[redci, stupci];
 
-            while (rowStart <= rowEnd && colStart <= colEnd)
+            int brojac = redci * stupci;
+            int vrh = 0, dno = redci - 1, lijevo = 0, desno = stupci - 1;
+
+            while (brojac >= 1)
             {
-                for (int i = colStart; i <= colEnd; i++)
+                for (int i = dno; i >= vrh; i--)
                 {
-                    matrix[rowStart, i] = num++;
+                    matrica[i, desno] = brojac--;
                 }
-                rowStart++;
+                desno--;
 
-                for (int i = rowStart; i <= rowEnd; i++)
+                for (int i = desno; i >= lijevo; i--)
                 {
-                    matrix[i, colEnd] = num++;
+                    matrica[vrh, i] = brojac--;
                 }
-                colEnd--;
+                vrh++;
 
-                if (rowStart <= rowEnd)
+                for (int i = vrh; i <= dno; i++)
                 {
-                    for (int i = colEnd; i >= colStart; i--)
-                    {
-                        matrix[rowEnd, i] = num++;
-                    }
-                    rowEnd--;
+                    matrica[i, lijevo] = brojac--;
                 }
+                lijevo++;
 
-                if (colStart <= colEnd)
+                for (int i = lijevo; i <= desno; i++)
                 {
-                    for (int i = rowEnd; i >= rowStart; i--)
-                    {
-                        matrix[i, colStart] = num++;
-                    }
-                    colStart++;
+                    matrica[dno, i] = brojac--;
                 }
+                dno--;
             }
 
-            return matrix;
+            return matrica;
         }
 
+        //static void IspisiMatricu(int[,] matrica)
+        //{
+        //    int redci = matrica.GetLength(0);
+        //    int stupci = matrica.GetLength(1);
+
+        //    for (int i = 0; i < redci; i++)
+        //    {
+        //        for (int j = 0; j < stupci; j++)
+        //        {
+        //            Console.Write($"{matrica[i, j],4} ");
+        //        }
+        //        Console.WriteLine();
+        //    }
+        //}
+    
 
 
 
-    }
+
+
+}
 }
