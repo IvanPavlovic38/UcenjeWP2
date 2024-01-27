@@ -10,7 +10,13 @@ namespace UcenjeCS
     {
         public static void Izvedi()
         {
-            
+            Console.WriteLine("Unesite svoje ime:");
+            string TvojeIme = Console.ReadLine();
+
+            Console.WriteLine("Unesite ime svoje simpatije:");
+            string SimpatijaIme = Console.ReadLine();
+
+
         }
     }
 }

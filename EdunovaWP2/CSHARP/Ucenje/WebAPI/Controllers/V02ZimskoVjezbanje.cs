@@ -198,7 +198,7 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         [Route("SpiralnaMatrica")]
-        public static int[,] SpiralnaMatrica(int redci, int stupci)
+        public int[,] SpiralnaMatrica(int redci, int stupci)
         {
             int[,] matrica = new int[redci, stupci];
 
@@ -235,25 +235,5 @@ namespace WebAPI.Controllers
             return matrica;
         }
 
-        //static void IspisiMatricu(int[,] matrica)
-        //{
-        //    int redci = matrica.GetLength(0);
-        //    int stupci = matrica.GetLength(1);
-
-        //    for (int i = 0; i < redci; i++)
-        //    {
-        //        for (int j = 0; j < stupci; j++)
-        //        {
-        //            Console.Write($"{matrica[i, j],4} ");
-        //        }
-        //        Console.WriteLine();
-        //    }
-        //}
-    
-
-
-
-
-
-}
+    }
 }
