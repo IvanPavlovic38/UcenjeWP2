@@ -198,38 +198,38 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         [Route("SpiralnaMatrica")]
-        public int[,] SpiralnaMatrica(int redci, int stupci)
+        public int[,] GenerirajSpiralnuMatricu(int redci, int stupci)
         {
             int[,] matrica = new int[redci, stupci];
 
-            int brojac = redci * stupci;
+            int brojac = 1;
             int vrh = 0, dno = redci - 1, lijevo = 0, desno = stupci - 1;
 
-            while (brojac >= 1)
+            while (brojac <= redci * stupci)
             {
-                for (int i = dno; i >= vrh; i--)
-                {
-                    matrica[i, desno] = brojac--;
-                }
-                desno--;
-
                 for (int i = desno; i >= lijevo; i--)
                 {
-                    matrica[vrh, i] = brojac--;
+                    matrica[dno, i] = brojac++;
                 }
-                vrh++;
+                dno--;
 
-                for (int i = vrh; i <= dno; i++)
+                for (int i = dno; i >= vrh; i--)
                 {
-                    matrica[i, lijevo] = brojac--;
+                    matrica[i, lijevo] = brojac++;
                 }
                 lijevo++;
 
                 for (int i = lijevo; i <= desno; i++)
                 {
-                    matrica[dno, i] = brojac--;
+                    matrica[vrh, i] = brojac++;
                 }
-                dno--;
+                vrh++;
+
+                for (int i = vrh; i <= dno; i++)
+                {
+                    matrica[i, desno] = brojac++;
+                }
+                desno--;
             }
 
             return matrica;

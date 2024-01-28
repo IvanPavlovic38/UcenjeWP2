@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UcenjeCS
 {
-    internal class Test
+    internal class TestSpiralnaMatrica
     {
         public static void Izvedi()
         {

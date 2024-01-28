@@ -17,4 +17,4 @@ using UcenjeCS;
 
 //LjubavniKalkulator.Izvedi();
 
-Test.Izvedi();
+TestSpiralnaMatrica.Izvedi();
