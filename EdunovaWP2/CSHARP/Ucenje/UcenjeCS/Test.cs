@@ -35,25 +35,25 @@ namespace UcenjeCS
                 {
                     matrica[dno, i] = brojac++;
                 }
-                vrh++;
+                dno--;
 
                 for (int i = dno; i >= vrh; i--)
                 {
                     matrica[i, lijevo] = brojac++;
                 }
-                desno--;
+                lijevo++;
 
                 for (int i = lijevo; i <= desno; i++)
                 {
                     matrica[vrh, i] = brojac++;
                 }
-                dno--;
+                vrh++;
 
                 for (int i = vrh; i <= dno; i++)
                 {
-                    matrica[vrh, desno] = brojac++;
+                    matrica[i, desno] = brojac++;
                 }
-                lijevo++;
+                desno--;
             }
 
             return matrica;
