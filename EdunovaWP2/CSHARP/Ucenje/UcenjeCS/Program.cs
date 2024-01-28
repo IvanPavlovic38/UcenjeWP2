@@ -15,4 +15,6 @@ using UcenjeCS;
 
 //Z02Vjezba.Izvedi();
 
-LjubavniKalkulator.Izvedi();
+//LjubavniKalkulator.Izvedi();
+
+Test.Izvedi();
