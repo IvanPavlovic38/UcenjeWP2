@@ -47,11 +47,12 @@ namespace UcenjeCS
 
         public static int IzracunajKompatibilnost(int Slova)
         {
-            int[] Rezultat = new int[]; 
-            for (int i; i<;i++)
+            int[] Rezultat = new int[Slova.Length];
+            for (int i; i<Slova.Length && Slova.Length-i>=0; i++)
             {
-                
+                Rezultat[i] = Slova[i] + Slova[Slova.Length-i];
             }
+            return Rezultat;
         }
 
 
