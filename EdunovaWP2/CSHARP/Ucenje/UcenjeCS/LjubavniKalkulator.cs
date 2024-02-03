@@ -8,15 +8,13 @@ namespace UcenjeCS
 {
     internal class LjubavniKalkulator
     {
-        public string TvojeIme { get; set; }
-        public string SimpatijaIme { get; set; }
         public static void Izvedi()
         {
             Console.WriteLine("Unesite svoje ime:");
-            TvojeIme = Console.ReadLine();
+            string TvojeIme = Console.ReadLine();
 
             Console.WriteLine("Unesite ime svoje simpatije:");
-            SimpatijaIme = Console.ReadLine();
+            string SimpatijaIme = Console.ReadLine();
 
             Rezultat();
         }
@@ -26,7 +24,7 @@ namespace UcenjeCS
             return IzracunajKompatibilnost(PretvoriUBrojeve(TvojeIme+SimpatijaIme)) + "%";
         }
 
-        public static int PretvoriUBrojeve(string TvojeIme, string SimpatijaIme)
+        public static int[] PretvoriUBrojeve(string TvojeIme, string SimpatijaIme)
         {
             string Unos = string.Concat(TvojeIme, SimpatijaIme);
             int[] Slova = new int[Unos.Length];
@@ -44,10 +42,10 @@ namespace UcenjeCS
             return Slova;
         }
 
-        public static int IzracunajKompatibilnost(int Slova)
+        public static int[] IzracunajKompatibilnost(int[] Slova)
         {
             int[] Rezultat = new int[Slova.Length];
-            for (int i; i<Slova.Length && Slova.Length-i>=0; i++)
+            for (int i = 0; i < Slova.Length && Slova.Length -i >= 0; i++)
             {
                 Rezultat[i] = Slova[i] + Slova[Slova.Length-i];
             }
