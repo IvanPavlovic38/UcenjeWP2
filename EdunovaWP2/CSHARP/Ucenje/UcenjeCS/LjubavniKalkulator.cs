@@ -8,20 +8,27 @@ namespace UcenjeCS
 {
     internal class LjubavniKalkulator
     {
+        public string TvojeIme { get; set; }
+        public string SimpatijaIme { get; set; }
         public static void Izvedi()
         {
             Console.WriteLine("Unesite svoje ime:");
-            string TvojeIme = Console.ReadLine();
+            TvojeIme = Console.ReadLine();
 
             Console.WriteLine("Unesite ime svoje simpatije:");
-            string SimpatijaIme = Console.ReadLine();
+            SimpatijaIme = Console.ReadLine();
 
+            Rezultat();
+        }
 
+        public static string Rezultat()
+        {
+            return IzracunajKompatibilnost(PretvoriUBrojeve(TvojeIme+SimpatijaIme)) + "%";
         }
 
         public static int PretvoriUBrojeve(string TvojeIme, string SimpatijaIme)
         {
-            string[] Unos = new string[TvojeIme.Length + SimpatijaIme.Length];
+            string Unos;
             for(int i = 0; i < TvojeIme.Length; i++)
             {
                 Unos[i] = TvojeIme[i];
