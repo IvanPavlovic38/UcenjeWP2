@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace WebAPI.Controllers
 {
@@ -198,7 +199,7 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         [Route("SpiralnaMatrica")]
-        public int[,] GenerirajSpiralnuMatricu(int redci, int stupci)
+        public string GenerirajSpiralnuMatricu(int redci, int stupci)
         {
             int[,] matrica = new int[redci, stupci];
 
@@ -232,7 +233,7 @@ namespace WebAPI.Controllers
                 desno--;
             }
 
-            return matrica;
+            return JsonConvert.SerializeObject(matrica, Formatting.Indented);
         }
 
     }
