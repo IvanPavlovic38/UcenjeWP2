@@ -84,16 +84,19 @@ namespace UcenjeCS
             return Slova;
         }
 
-        public static int[] IzracunajKompatibilnost(int[] Slova)
+        public static int IzracunajKompatibilnost(int Slova)
         {
-            int[] Rezultat = new int[Slova.Length];
-            for (int i = 0; i < Slova.Length && Slova.Length -i >= 0; i++)
+            char[] Rezultat = Slova.ToString().ToCharArray();
+            int Duljina = Rezultat.Length;
+            char[] NoviBroj = new char[Duljina];
+            for (int i = 0; i < Duljina; i++)
             {
-                Rezultat[i] = Slova[i] + Slova[Slova.Length-i];
+                Rezultat[i] = Rezultat[i] + Rezultat[Duljina-1-i];
             }
-            if ()
+            int NoviRezultat = int.Parse(new string(Rezultat));
+            if (NoviRezultat <= 100)
             {
-                return Rezultat;
+                return NoviRezultat;
             }
             return IzracunajKompatibilnost(Rezultat);
         }
