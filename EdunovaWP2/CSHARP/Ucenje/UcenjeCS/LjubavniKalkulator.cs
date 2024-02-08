@@ -24,7 +24,7 @@ namespace UcenjeCS
             return IzracunajKompatibilnost(PretvoriUBrojeve(TvojeIme, SimpatijaIme)) + "%";
         }
 
-        public static int[] PretvoriUBrojeve(string TvojeIme, string SimpatijaIme)
+        public static int PretvoriUBrojeve(string TvojeIme, string SimpatijaIme)
         {
             int[] TvojaSlova = new int[TvojeIme.Length];
             int[] SimpatijaSlova = new int[SimpatijaIme.Length];
@@ -86,19 +86,20 @@ namespace UcenjeCS
 
         public static int IzracunajKompatibilnost(int Slova)
         {
-            char[] Rezultat = Slova.ToString().ToCharArray();
-            int Duljina = Rezultat.Length;
-            char[] NoviBroj = new char[Duljina];
+            char[] Znamenke = Slova.ToString().ToCharArray();
+            int Duljina = Znamenke.Length;
+            char[] TransformiraneZnamenke = new char[Duljina];
             for (int i = 0; i < Duljina; i++)
             {
-                Rezultat[i] = Rezultat[i] + Rezultat[Duljina-1-i];
+                int zbroj = int.Parse(Znamenke[i].ToString()) + int.Parse(Znamenke[Duljina-1-i].ToString());
+                TransformiraneZnamenke[i] = char.Parse(zbroj.ToString());
             }
-            int NoviRezultat = int.Parse(new string(Rezultat));
-            if (NoviRezultat <= 100)
+            int TransformiraniBroj = int.Parse(new string(TransformiraneZnamenke));
+            if (TransformiraniBroj <= 100)
             {
-                return NoviRezultat;
+                return TransformiraniBroj;
             }
-            return IzracunajKompatibilnost(Rezultat);
+            return IzracunajKompatibilnost(TransformiraniBroj);
         }
 
 
