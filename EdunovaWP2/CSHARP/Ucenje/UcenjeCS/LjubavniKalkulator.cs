@@ -49,38 +49,42 @@ namespace UcenjeCS
                 }
                 SimpatijaSlova[Index++] = Ukupno;
             }
+
+            int Duljina, Kraj;
             if (TvojaSlova.Length == SimpatijaSlova.Length)
             {
-                int[] Slova = new int[TvojaSlova.Length];
-                for (int i = 0; i < TvojaSlova.Length; i++)
-                {
-                    Slova[i] = TvojaSlova[i] + SimpatijaSlova[SimpatijaSlova.Length - i];
-                }
+                Duljina = TvojaSlova.Length;
+                Kraj = SimpatijaSlova.Length;
             }
             else if (TvojaSlova.Length > SimpatijaSlova.Length)
             {
-                int[] Slova = new int[TvojaSlova.Length];
-                for (int i = 0; i < SimpatijaSlova.Length; i++)
-                {
-                    Slova[i] = TvojaSlova[i] + SimpatijaSlova[SimpatijaSlova.Length - i];
-                }
-                for (int j = i; j < TvojaSlova.Length; j++)
-                {
-                    Slova[j] = TvojaSlova[j];
-                }
+                Duljina = SimpatijaSlova.Length;
+                Kraj = TvojaSlova.Length;
             }
             else
             {
-                int[] Slova = new int[SimpatijaSlova.Length];
-                for (int i = 0; i < TvojaSlova.Length; i++)
+                Duljina = TvojaSlova.Length;
+                Kraj = SimpatijaSlova.Length;
+            }
+
+            int[] Slova = new int[Duljina];
+            int i, j;
+            for (i = 0; i < Duljina; i++)
+            {
+                Slova[i] = TvojaSlova[i] + SimpatijaSlova[SimpatijaSlova.Length - i];
+            }
+            for (j = i; j < Kraj; j++)
+            {
+                if (Kraj == TvojaSlova.Length)
                 {
-                    Slova[i] = TvojaSlova[i] + SimpatijaSlova[SimpatijaSlova.Length - i];
+                    Slova[j] = TvojaSlova[j];
                 }
-                for (int j = i; j < SimpatijaSlova.Length; j++)
+                else if (Kraj == SimpatijaSlova.Length)
                 {
                     Slova[j] = SimpatijaSlova[j];
                 }
             }
+            
             return Slova;
         }
 
