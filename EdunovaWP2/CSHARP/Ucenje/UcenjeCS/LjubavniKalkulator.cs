@@ -84,8 +84,9 @@ namespace UcenjeCS
                     Slova[j] = SimpatijaSlova[j];
                 }
             }
-            
-            return Slova;
+            string Concat = string.Join("", Slova);
+            int Result = int.Parse(Concat);
+            return Result;
         }
 
         public static int IzracunajKompatibilnost(int Slova)
