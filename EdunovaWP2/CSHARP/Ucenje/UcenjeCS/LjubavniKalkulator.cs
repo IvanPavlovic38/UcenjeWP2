@@ -16,6 +16,7 @@ namespace UcenjeCS
             Console.WriteLine("Unesite ime svoje simpatije:");
             string SimpatijaIme = Console.ReadLine();
 
+            Console.WriteLine(PretvoriUBrojeve(TvojeIme) + "," + PretvoriUBrojeve(SimpatijaIme));
             Console.WriteLine(Rezultat(TvojeIme, SimpatijaIme));
         }
 
