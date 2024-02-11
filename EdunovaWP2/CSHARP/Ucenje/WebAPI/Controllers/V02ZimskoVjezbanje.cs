@@ -73,9 +73,9 @@ namespace WebAPI.Controllers
         [Route("Zad5")]
         public int[] Zad5(int Od, int Do)
         {
-            int[] Niz = new int[100];
+            int[] Niz = new int[(Do-Od)/2];
             int Index = 0;
-            for (int i = Od; i <= Do; i++)
+            for (int i = Od+1; i < Do; i++)
             {
                 if (i % 2 == 0)
                 {
@@ -90,9 +90,9 @@ namespace WebAPI.Controllers
         [Route("Zad6")]
         public int[] Zad6(int Od, int Do)
         {
-            int[] Niz = new int[100];
+            int[] Niz = new int[(Do-Od)/2+(Do-Od)%2-1];
             int Index = 0;
-            for (int i = Od; i <= Do; i++)
+            for (int i = Od+1; i < Do; i++)
             {
                 if (i % 2 != 0)
                 {
@@ -108,7 +108,7 @@ namespace WebAPI.Controllers
         public int Zad7(int Od, int Do)
         {
             int suma = 0;
-            for (int i = Od; i <= Do; i++)
+            for (int i = Od+1; i < Do; i++)
             {
                 suma += i;
             }
@@ -120,7 +120,7 @@ namespace WebAPI.Controllers
         public int Zad8(int Od, int Do)
         {
             int suma = 0;
-            for (int i = Od; i <= Do; i++)
+            for (int i = Od + 1; i < Do; i++)
             {
                 if ((i % 3) == 0)
                 {
@@ -135,7 +135,7 @@ namespace WebAPI.Controllers
         public int Zad9(int Od, int Do)
         {
             int suma = 0;
-            for (int i = Od; i <= Do; i++)
+            for (int i = Od + 1; i < Do; i++)
             {
                 if ((i % 3) == 0 && (i % 5) == 0)
                 {
@@ -147,7 +147,7 @@ namespace WebAPI.Controllers
 
         [HttpGet]
         [Route("Zad10")]
-        public int[,] Zad10(int a, int b)
+        public string Zad10(int a, int b)
         {
             int[,] Niz = new int[a, b];
 
@@ -159,7 +159,7 @@ namespace WebAPI.Controllers
                 }
             }
 
-            return Niz;
+            return JsonConvert.SerializeObject(Niz, Formatting.Indented);
         }
 
 
@@ -167,7 +167,7 @@ namespace WebAPI.Controllers
         [Route("Zad11")]
         public int[] Zad11(int Broj)
         {
-            int[] Niz = new int[100];
+            int[] Niz = new int[Broj];
             for (int i = Broj; i >= 1; i--)
             {
                 Niz[Broj - i] = i;
