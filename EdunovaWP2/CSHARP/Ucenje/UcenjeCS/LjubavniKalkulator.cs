@@ -17,6 +17,7 @@ namespace UcenjeCS
             string SimpatijaIme = Console.ReadLine();
 
             Console.WriteLine(PretvoriUBrojeve(TvojeIme) + "," + PretvoriUBrojeve(SimpatijaIme));
+            Console.WriteLine(ZbrojiBrojeve(PretvoriUBrojeve(TvojeIme), PretvoriUBrojeve(SimpatijaIme)));
             Console.WriteLine(Rezultat(TvojeIme, SimpatijaIme));
         }
 
@@ -72,7 +73,15 @@ namespace UcenjeCS
             char[] TransformiraneZnamenke = new char[Duljina];
             for (int i = 0; i < Duljina; i++)
             {
-                int zbroj = int.Parse(Znamenke[i].ToString()) + int.Parse(Znamenke[Duljina-1-i].ToString());
+                int zbroj;
+                if (i == Duljina-1-i)
+                {
+                    zbroj = int.Parse(Znamenke[i].ToString());
+                }
+                else
+                {
+                    zbroj = int.Parse(Znamenke[i].ToString()) + int.Parse(Znamenke[Duljina-1-i].ToString());
+                }
                 TransformiraneZnamenke[i] = char.Parse(zbroj.ToString());
             }
             int TransformiraniBroj = int.Parse(new string(TransformiraneZnamenke));
