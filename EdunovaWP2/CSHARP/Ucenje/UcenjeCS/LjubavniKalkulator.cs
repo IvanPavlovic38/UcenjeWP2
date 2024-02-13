@@ -16,6 +16,7 @@ namespace UcenjeCS
             Console.WriteLine("Unesite ime svoje simpatije:");
             string SimpatijaIme = Console.ReadLine();
 
+            Console.WriteLine(PretvoriUBrojeve(TvojeIme, SimpatijaIme));
             Console.WriteLine(Rezultat(TvojeIme, SimpatijaIme));
         }
 
@@ -78,7 +79,7 @@ namespace UcenjeCS
             for (int i = 0; i < length; i++)
             {
                 int PrvaZnamenka = i < ConcatTvoje.Length ? int.Parse(ConcatTvoje[i].ToString()) : 0;
-                int DrugaZnamenka = i < ConcatSimpatija.Length ? int.Parse(ConcatSimpatija[i].ToString()) : 0;
+                int DrugaZnamenka = i < ConcatSimpatija.Length ? int.Parse(ConcatSimpatija[length - 1 - i].ToString()) : 0;
 
                 int sum = PrvaZnamenka + DrugaZnamenka;
                 Rezultat += sum.ToString();
