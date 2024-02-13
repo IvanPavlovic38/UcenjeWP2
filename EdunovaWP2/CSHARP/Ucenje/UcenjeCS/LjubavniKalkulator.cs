@@ -16,55 +16,77 @@ namespace UcenjeCS
             Console.WriteLine("Unesite ime svoje simpatije:");
             string SimpatijaIme = Console.ReadLine();
 
-            Console.WriteLine(PretvoriUBrojeve(TvojeIme) + "," + PretvoriUBrojeve(SimpatijaIme));
-            Console.WriteLine(ZbrojiBrojeve(PretvoriUBrojeve(TvojeIme), PretvoriUBrojeve(SimpatijaIme)));
             Console.WriteLine(Rezultat(TvojeIme, SimpatijaIme));
         }
 
         public static string Rezultat(string TvojeIme, string SimpatijaIme)
         {
-            return IzracunajKompatibilnost(ZbrojiBrojeve(PretvoriUBrojeve(TvojeIme), PretvoriUBrojeve(SimpatijaIme))) + "%";
+            return IzracunajKompatibilnost(PretvoriUBrojeve(TvojeIme,SimpatijaIme)) + "%";
         }
 
-        public static int PretvoriUBrojeve(string Ime)
+        public static int PretvoriUBrojeve(string TvojeIme, string SimpatijaIme)
         {
-            int[] Slova = new int[Ime.Length];
+            int[] TvojaSlova = new int[TvojeIme.Length];
+            int[] SimpatijaSlova = new int[SimpatijaIme.Length];
             int Index = 0;
             int Ukupno;
-            foreach (char c in Ime)
+            foreach (char c in TvojeIme)
             {
                 Ukupno = 0;
-                foreach (char cc in Ime)
+                foreach (char cc in TvojeIme)
                 {
-                    Ukupno++;
+                    if (c == cc)
+                    {
+                        Ukupno++;
+                    }
                 }
-                Slova[Index++] = Ukupno;
+                foreach (char cc in SimpatijaIme)
+                {
+                    if (c == cc)
+                    {
+                        Ukupno++;
+                    }
+                }
+                TvojaSlova[Index++] = Ukupno;
             }
-            string Concatenated = string.Join("", Slova);
-            int Rezultat = int.Parse(Concatenated);
-            return Rezultat;
-        }
-
-        private static int ZbrojiBrojeve(int PrviBroj, int DrugiBroj)
-        {
-            string strBroj1 = PrviBroj.ToString();
-            string strBroj2 = DrugiBroj.ToString();
+            Index = 0;
+            foreach (char c in SimpatijaIme)
+            {
+                Ukupno = 0;
+                foreach (char cc in TvojeIme)
+                {
+                    if (c == cc)
+                    {
+                        Ukupno++;
+                    }
+                }
+                foreach (char cc in SimpatijaIme)
+                {
+                    if (c == cc)
+                    {
+                        Ukupno++;
+                    }
+                }
+                SimpatijaSlova[Index++] = Ukupno;
+            }
+            string ConcatTvoje = string.Join("", TvojaSlova);
+            string ConcatSimpatija = string.Join("", SimpatijaSlova);
 
             string Rezultat = "";
-
-            int length = Math.Max(strBroj1.Length, strBroj2.Length);
+            int length = Math.Max(ConcatTvoje.Length, ConcatSimpatija.Length);
 
             for (int i = 0; i < length; i++)
             {
-                int PrvaZnamenka = i < strBroj1.Length ? int.Parse(strBroj1[i].ToString()) : 0;
-                int DrugaZnamenka = i < strBroj2.Length ? int.Parse(strBroj2[i].ToString()) : 0;
+                int PrvaZnamenka = i < ConcatTvoje.Length ? int.Parse(ConcatTvoje[i].ToString()) : 0;
+                int DrugaZnamenka = i < ConcatSimpatija.Length ? int.Parse(ConcatSimpatija[i].ToString()) : 0;
 
-                int Suma = PrvaZnamenka + DrugaZnamenka;
-                Rezultat += Suma.ToString();
+                int sum = PrvaZnamenka + DrugaZnamenka;
+                Rezultat += sum.ToString();
             }
 
             return int.Parse(Rezultat);
         }
+
 
         public static int IzracunajKompatibilnost(int Slova)
         {
