@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UcenjeCS.StreamingApp
+namespace UcenjeCS.StreamingApp.Model
 {
-    internal class Sezona
+    internal class Serija
     {
         public string Naziv { get; set; }
-        public string Serija { get; set; }
+        public string Opis { get; set; }
     }
 }

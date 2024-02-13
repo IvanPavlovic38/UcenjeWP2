@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UcenjeCS.StreamingApp
+namespace UcenjeCS.StreamingApp.Model
 {
     internal class Epizoda
     {
