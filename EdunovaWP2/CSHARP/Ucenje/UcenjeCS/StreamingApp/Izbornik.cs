@@ -17,7 +17,30 @@ namespace UcenjeCS.StreamingApp
 
         private void PrikaziIzbornik()
         {
-            
+            Console.WriteLine("Glavni izbornik");
+            Console.WriteLine("1. Traži serije");
+            Console.WriteLine("2. Žanrovi");
+            Console.WriteLine("3. Vaša lista");
+            Console.WriteLine("4. Povijest gledanja");
+
+            switch ()
+            {
+                case 1:
+                    ObradaTrazi.PrikaziIzbornik();
+                    PrikaziIzbornik();
+                    break;
+                case 2:
+                    ObradaZanrovi.PrikaziIzbornik();
+                    PrikaziIzbornik();
+                    break;
+                case 3:
+                    ObradaVasaLista.PrikaziIzbornik();
+                    PrikaziIzbornik(); ;
+                    break;
+                case 4:ObradaPovijest.PrikaziIzbornik();
+                    PrikaziIzbornik();
+                    break;
+            }
         }
     }
 }
