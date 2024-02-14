@@ -94,18 +94,17 @@ namespace UcenjeCS
             char[] Znamenke = Slova.ToString().ToCharArray();
             int Duljina = Znamenke.Length;
             char[] TransformiraneZnamenke = new char[Duljina];
-            for (int i = 0; i < Duljina; i++)
+            int zbroj;
+            int i;
+            for (i = 0; i < Duljina / 2; i++)
             {
-                int zbroj;
-                if (i == Duljina-1-i)
-                {
-                    zbroj = int.Parse(Znamenke[i].ToString());
-                }
-                else
-                {
-                    zbroj = int.Parse(Znamenke[i].ToString()) + int.Parse(Znamenke[Duljina-1-i].ToString());
-                }
-                TransformiraneZnamenke[i] = char.Parse(zbroj.ToString());
+                int SuprotniIndex = Duljina - 1 - i;
+                zbroj = int.Parse(Znamenke[i].ToString()) + int.Parse(Znamenke[SuprotniIndex].ToString());
+                TransformiraneZnamenke[i] = (char)(zbroj + '0');
+            }
+            if (Duljina % 2 == 1)
+            {
+                TransformiraneZnamenke[Duljina / 2] = Znamenke[Duljina / 2];
             }
             int TransformiraniBroj = int.Parse(new string(TransformiraneZnamenke));
             if (TransformiraniBroj <= 100)
