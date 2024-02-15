@@ -18,5 +18,3 @@ using UcenjeCS;
 LjubavniKalkulator.Izvedi();
 
 //TestSpiralnaMatrica.Izvedi();
-
-//Testkombbr.Izvedi();

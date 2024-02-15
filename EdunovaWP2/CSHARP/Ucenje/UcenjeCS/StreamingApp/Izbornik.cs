@@ -37,7 +37,8 @@ namespace UcenjeCS.StreamingApp
                     ObradaVasaLista.PrikaziIzbornik();
                     PrikaziIzbornik(); ;
                     break;
-                case 4:ObradaPovijest.PrikaziIzbornik();
+                case 4:
+                    ObradaPovijest.PrikaziIzbornik();
                     PrikaziIzbornik();
                     break;
             }
