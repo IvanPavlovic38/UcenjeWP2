@@ -15,6 +15,17 @@ namespace UcenjeCS.StreamingApp
             Console.WriteLine("***********************************");
         }
 
+        public Izbornik() 
+        {
+            Pomocno.dev = false;
+            ObradaTrazi = new ObradaTrazi();
+            ObradaZanrovi = new ObradaZanrovi();
+            ObradaVasaLista = new ObradaVasaLista();
+            ObradaPovijest = new ObradaPovijest();
+            PozdravnaPoruka();
+            PrikaziIzbornik();
+        }
+
         private void PrikaziIzbornik()
         {
             Console.WriteLine("Glavni izbornik");
@@ -22,6 +33,7 @@ namespace UcenjeCS.StreamingApp
             Console.WriteLine("2. Žanrovi");
             Console.WriteLine("3. Vaša lista");
             Console.WriteLine("4. Povijest gledanja");
+            Console.WriteLine("5. Izlaz iz programa");
 
             switch ()
             {
@@ -40,6 +52,9 @@ namespace UcenjeCS.StreamingApp
                 case 4:
                     ObradaPovijest.PrikaziIzbornik();
                     PrikaziIzbornik();
+                    break;
+                case 5:
+                    Console.WriteLine("Hvala na korištenju, doviđenja");
                     break;
             }
         }
