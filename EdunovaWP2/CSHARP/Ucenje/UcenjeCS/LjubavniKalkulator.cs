@@ -113,6 +113,7 @@ namespace UcenjeCS
             {
                 return TransformiraniBroj;
             }
+            Console.WriteLine(TransformiraniBroj);
             return IzracunajKompatibilnost(TransformiraniBroj);
         }
 
