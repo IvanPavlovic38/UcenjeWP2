@@ -60,7 +60,17 @@ namespace UcenjeCS.E15KonzolnaAplikacija
         {
             PrikaziGrupe();
             int index = Pomocno.ucitajBrojRaspon("Odaberi redni broj grupe: ", "Nije dobar odabir", 1, Grupe.Count());
-            
+            var p = Grupe[index - 1];
+            Console.WriteLine("Trenutni polaznici:");
+            Console.WriteLine("------------------");
+            Console.WriteLine("---- Polaznici ----");
+            Console.WriteLine("------------------");
+            int b = 1;
+            foreach (Polaznik polaznik in p.Polaznici)
+            {
+                Console.WriteLine("{0}. {1}", b++, polaznik);
+            }
+            Console.WriteLine("------------------");
         }
 
         private void PromjenaGrupe()
