@@ -58,7 +58,9 @@ namespace UcenjeCS.E15KonzolnaAplikacija
 
         private void BrisanjePolaznikaSGrupe()
         {
-
+            PrikaziGrupe();
+            int index = Pomocno.ucitajBrojRaspon("Odaberi redni broj grupe: ", "Nije dobar odabir", 1, Grupe.Count());
+            
         }
 
         private void PromjenaGrupe()
