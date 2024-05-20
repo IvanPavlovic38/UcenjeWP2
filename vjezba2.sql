@@ -32,3 +32,40 @@ novcica decimal(15,9),
 lipa decimal(15,8) not null,
 indeferentno bit not null
 );
+
+create table prijatelj(
+sifra int not null, 
+modelnaocala varchar(37),
+treciputa datetime not null,
+ekstroventno bit not null,
+prviputa datetime,
+svekar int not null
+);
+
+create table neprijatelj(
+sifra int,
+majica varchar(32),
+haljina varchar(43),
+lipa decimal(16,8),
+modelnaocala varchar(49),
+kuna decimal(12,6),
+jmbag char(11),
+cura int
+);
+
+create table cura(
+sifra int not null,
+haljina varchar(33) not null,
+drugiputa datetime not null,
+suknja varchar(38),
+narukvica int,
+introventno bit,
+majica varchar(40) not null,
+decko int
+);
+
+create table decko_zarucnica(
+sifra int not null,
+decko int not null,
+zarucnica int not null
+);
