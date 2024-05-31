@@ -76,3 +76,16 @@ alter table brat add foreign key (neprijatelj) references neprijatelj(sifra);
 alter table prijatelj add foreign key (svekar) references svekar(sifra);
 alter table decko_zarucnica add foreign key (decko) references decko(sifra);
 alter table decko_zarucnica add foreign key (zarucnica) references zarucnica(sifra);
+
+insert into neprijatelj (kuna)
+values (560),
+values (780)
+values (630);
+
+insert into cura (introvertno)
+values (1),
+values (0)
+values (1);
+
+insert into decko_zarucnica ()
+values ();
