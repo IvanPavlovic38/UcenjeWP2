@@ -73,20 +73,24 @@ zarucnica int not null
 alter table cura add foreign key (decko) references decko(sifra);
 alter table neprijatelj add foreign key (cura) references cura(sifra);
 alter table brat add foreign key (neprijatelj) references neprijatelj(sifra);
-alter table prijatelj add foreign key (svekar) references svekar(sifra);
+alter table prijatelj add foreign key (svekar) references svekar(sifra); 
 alter table decko_zarucnica add foreign key (decko) references decko(sifra);
 alter table decko_zarucnica add foreign key (zarucnica) references zarucnica(sifra);
 alter table prijatelj add foreign key (svekar) references svekar(sifra);
 
-insert into neprijatelj (kuna)
-values (560),
-values (780),
-values (630);
+insert into neprijatelj (haljina, modelnaocala, kuna) values 
+('crvena', 'reanult', 560),
+('plava', 'bmw', 780),
+('zelena', 'tesla', 630);
 
-insert into cura (introvertno)
-values (1),
-values (0),
-values (1);
+insert into cura (haljina, drugiputa, majica) values
+('zuta', '2024-8-16' , 'plava'),
+('ljubicasta', '2024-4-8' , 'zelena'),
+('crvena', '2024-6-23' , 'narandasta');
 
-insert into decko_zarucnica ()
-values ();
+insert into decko_zarucnica (decko, zarucnica) values 
+(4,6),
+(2,5),
+(1,7);
+
+select * from neprijatelj;
